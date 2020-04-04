@@ -1,4 +1,4 @@
-FROM archlinux:20191105
+FROM archlinux:20200306
 RUN pacman -Sy --noconfirm \
       bash clang coreutils \
       diffutils dos2unix fakeroot ffmpeg file findutils fzf \
@@ -19,13 +19,11 @@ WORKDIR /home/seckinger
 RUN git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
 
 RUN yay -S --noconfirm neovim-nightly zsh-theme-powerlevel10k-git
-RUN pip install --user neovim
-RUN rustup install stable && rustup default stable && rustup component add rls-preview rust-analysis rust-src rustfmt
 
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
-      git fetch && git checkout 4a86821 && \
+      git fetch && git checkout fd872b4ec5a74c00adfb4d2d989a94a80570a839 && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
 
