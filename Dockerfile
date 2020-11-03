@@ -1,4 +1,4 @@
-FROM archlinux:20200306
+FROM archlinux:20200908
 RUN pacman -Sy --noconfirm \
       bash clang coreutils \
       diffutils dos2unix fakeroot ffmpeg file findutils fzf \
@@ -8,6 +8,9 @@ RUN pacman -Sy --noconfirm \
       p7zip patch pdfgrep perl pygmentize python-pip ripgrep rsync ruby rustup \
       scala screenfetch sed strace sudo tar time tmux unzip watchman which \
       yarn youtube-dl zip zsh zsh-completions
+
+# needed for yay
+RUN pacman -Sy --noconfirm gettext
 
 RUN useradd -m seckinger -g wheel
 RUN chsh -s /bin/zsh seckinger
@@ -23,7 +26,7 @@ RUN yay -S --noconfirm neovim-nightly zsh-theme-powerlevel10k-git
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
-      git fetch && git checkout fd872b4ec5a74c00adfb4d2d989a94a80570a839 && \
+      git fetch && git checkout 094d49e82ceaabf2cad3a9da496b70a1a649d897 && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
 
