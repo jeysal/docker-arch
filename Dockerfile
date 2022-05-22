@@ -1,4 +1,4 @@
-FROM archlinux:base-20220410.0.52530
+FROM archlinux:base-20220515.0.56491
 RUN pacman -Sy --noconfirm \
       bash clang colordiff coreutils \
       diffpdf diffutils dos2unix dotnet-sdk fakeroot ffmpeg file findutils fzf \
@@ -24,7 +24,7 @@ RUN yay -Sy --noconfirm watchman-bin zsh-theme-powerlevel10k-git
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
-      git fetch && git checkout 8d0ec9f5d05b640a57ae69e7f5e3b4ff52ec9719 && \
+      git fetch && git checkout 27b0da8bfeeb594f50525367ad422f23ba57595b && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
 
