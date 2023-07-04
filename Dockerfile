@@ -1,4 +1,4 @@
-FROM archlinux:base-20230129.0.122153
+FROM archlinux:base-20230702.0.161694
 RUN pacman -Sy --noconfirm \
       bash clang colordiff coreutils \
       diffpdf diffutils dos2unix dotnet-sdk fakeroot ffmpeg file findutils fzf \
@@ -7,7 +7,7 @@ RUN pacman -Sy --noconfirm \
       knot magic-wormhole make man-db man-pages mercurial moreutils \
       neovim net-tools nmap nodejs npm openssh \
       p7zip patch pdfgrep perl perl-rename pygmentize python-pip ripgrep rsync ruby rustup \
-      scala screenfetch sed strace sudo tar tcpdump time tmux unzip which \
+      screenfetch sed strace sudo tar tcpdump time tmux unzip which \
       yarn youtube-dl zip zsh zsh-completions
 
 RUN useradd -m seckinger -g wheel
@@ -19,12 +19,12 @@ WORKDIR /home/seckinger
 
 RUN git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
 
-RUN yay -Sy --noconfirm watchman-bin zsh-theme-powerlevel10k-git
+RUN yay -Sy --noconfirm zsh-theme-powerlevel10k-git
 
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
-      git fetch && git checkout 278fc83f3cfecc6583cb31b9b8154703c6fe8472 && \
+      git fetch && git checkout 39ecd61d1d192721f5cd27e84b951145eab8a9b6 && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
 
