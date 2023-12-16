@@ -27,7 +27,7 @@ RUN yay -Sy --noconfirm zsh-theme-powerlevel10k-git
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
-      git fetch && git checkout 1f39feb4c3e79e1518b355247715af738b42b50f && \
+      git fetch && git checkout 233518f9a0752bfd8a46792d51a8c67e2605f37a && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
 
