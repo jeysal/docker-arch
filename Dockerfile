@@ -1,4 +1,4 @@
-FROM archlinux:base-20231112.0.191179
+FROM archlinux:base-20240101.0.204074
 
 RUN echo 'nameserver 9.9.9.9' >> /etc/resolv.conf
 
@@ -27,7 +27,7 @@ RUN yay -Sy --noconfirm zsh-theme-powerlevel10k-git
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
-      git fetch && git checkout 233518f9a0752bfd8a46792d51a8c67e2605f37a && \
+      git fetch && git checkout 5d261bab74f64cb19a93f69ddcfb2be35c8e5304 && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
 
