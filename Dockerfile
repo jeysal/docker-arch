@@ -1,4 +1,4 @@
-FROM archlinux:base-20240101.0.204074
+FROM archlinux:base-devel-20240101.0.204074
 
 RUN echo 'nameserver 9.9.9.9' >> /etc/resolv.conf
 
@@ -20,15 +20,15 @@ RUN visudo -c
 USER seckinger
 WORKDIR /home/seckinger
 
-RUN git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm && cd .. && rm -rf yay
-
-RUN yay -Sy --noconfirm zsh-theme-powerlevel10k-git
-
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
       git fetch && git checkout 5d261bab74f64cb19a93f69ddcfb2be35c8e5304 && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
+
+RUN git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm && cd .. && rm -rf paru
+
+RUN paru -Sy --noconfirm zsh-theme-powerlevel10k-git
 
 ENTRYPOINT /bin/zsh
