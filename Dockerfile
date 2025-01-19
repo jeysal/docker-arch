@@ -29,6 +29,6 @@ RUN mkdir conf && cd conf && git init && \
 
 RUN git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm && cd .. && rm -rf paru
 
-RUN paru -Sy --noconfirm zsh-theme-powerlevel10k-bin-git
+RUN paru -Sy --noconfirm fnm-bin zsh-theme-powerlevel10k-bin-git
 
 ENTRYPOINT /bin/zsh
