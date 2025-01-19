@@ -1,4 +1,4 @@
-FROM archlinux:base-devel-20240101.0.204074
+FROM archlinux/archlinux:base-devel-20250119.0.299468
 
 RUN echo 'nameserver 9.9.9.9' >> /etc/resolv.conf
 
@@ -23,7 +23,7 @@ WORKDIR /home/seckinger
 RUN rm .zshrc
 RUN mkdir conf && cd conf && git init && \
       git remote add origin https://github.com/jeysal/dotfiles && \
-      git fetch && git checkout 5d261bab74f64cb19a93f69ddcfb2be35c8e5304 && \
+      git fetch && git checkout cde75be3b4f3029938772aaa2fc52f46a9250f66 && \
       git submodule init && git submodule update && \
       ./install.sh && cd ..
 
