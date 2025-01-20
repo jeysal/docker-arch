@@ -31,4 +31,6 @@ RUN git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noc
 
 RUN paru -Sy --noconfirm fnm-bin zsh-theme-powerlevel10k-bin-git
 
+RUN fnm install
+
 ENTRYPOINT /bin/zsh
